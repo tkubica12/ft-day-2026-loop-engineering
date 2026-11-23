@@ -251,6 +251,20 @@
 .retro-band--plug .composition-media { aspect-ratio: 4.8 / 1; }
 .retro-band--signs .composition-media { aspect-ratio: 4.3 / 1; }
 .retro-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.slide-note { display: flex; gap: 6px; font-size: 0; line-height: 0; }
+.slide-note::before, .slide-note::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+[data-speaker="tomas"] .slide-note::before,
+[data-speaker="tomas-valda"] .slide-note::before { background: var(--accent); }
+[data-speaker="valda"] .slide-note::before,
+[data-speaker="tomas-valda"] .slide-note::after { background: #00a06f; }
+[data-speaker="tomas"] .slide-note::after,
+[data-speaker="valda"] .slide-note::after { display: none; }
 .agent-split {
   display: grid;
   grid-template-columns: minmax(0, 0.36fr) minmax(0, 1fr);
