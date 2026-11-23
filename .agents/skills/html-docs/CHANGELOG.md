@@ -1,0 +1,220 @@
+# Changelog
+
+## 1.6.0 — 2026-11-13
+
+**Chosen export palette and an illustrated example.**
+
+### Added
+
+- `--accent blue|red|green|yellow` for `export-pdf.js`, `export-pptx.js`, and
+  `test-pptx.js` overrides the document's default accent for that run, like
+  `--theme` for the print palette. `test-pptx.js` checks that the export uses
+  the requested accent; a dark green fixture joins the regression fixtures.
+- Before exporting a PDF or `.pptx`, the agent asks for light or dark and the
+  accent unless the user already chose, and keeps one folder per palette.
+
+### Changed
+
+- The example talk carries nine generated illustrations in hero, split,
+  circle, and panorama compositions on its opening, cards, and closing, in
+  Slides and Read. It ships light and dark PDFs and PowerPoint files with the
+  blue accent in `exports/light` and `exports/dark`; both `.pptx` files match
+  the browser in PowerPoint with no differing area.
+
+### Upgrading a document
+
+Copy `validate.js`, `export-pdf.js`, `export-pptx.js`, and `test-pptx.js` into
+the document's `assets` folder. Nothing changes in the HTML or runtime.
+
+## 1.5.0 — 2026-11-13
+
+**Optional PowerPoint export of slides and decks.**
+
+### Added
+
+- `export-pptx.js` writes the slides view of a deck (`<name>.pptx`) or an
+  article (`<name>.slides.pptx`). Each slide's background is the printed
+  design with the text removed; native, editable text boxes sit exactly where
+  Chromium laid out the text, with the document's fonts, colors, and line
+  breaks. Every slide has a title placeholder; article slides carry the card's
+  reading text as speaker notes. Theme colors and fonts come from the tokens.
+- Text PowerPoint cannot reproduce, such as effects, transforms, clipping, or
+  synthesized bold and italic, stays in the picture and is reported.
+  `--text image` writes picture-only slides; `--theme`, `--out`, `--width`,
+  and `--no-notes` are supported. Clipping slides and documents without a
+  slides view are refused.
+- `test-pptx.js` renders every slide in desktop PowerPoint, compares it with
+  Chromium after a 2 px blur, tolerating one render pixel of pixel-grid
+  snapping, and writes difference maps. It fails when any 32 × 32 slide-pixel
+  area differs on more than 2% of its pixels, which catches a single missing
+  character. The regression fixtures cover light, dark, and picture-only
+  decks, article slides, and the visual gallery; every slide measures 0%, and
+  the example deck at most 0.4%.
+
+### Upgrading a document
+
+Copy `export-pptx.js` and `test-pptx.js` into the document's `assets` folder.
+Nothing changes in the HTML, runtime, or PDFs.
+
+## 1.4.0 — 2026-10-26
+
+**Content-led emphasis, shared content edges, and explicit dark PDFs.**
+
+### Changed
+
+- Sequence items are neutral by default, including the last. Add
+  `sequence-item--emphasis` to any item only when the content justifies it.
+  Ordered progressions keep their arrows; unordered peers reuse `summary-grid`.
+- Authoring instructions and component galleries distinguish order, peer
+  choices, and semantic emphasis. Visual review asks why something is
+  emphasized; geometry alone cannot judge that.
+- Visual galleries demonstrate peer cards, a full-width panorama, captions,
+  and related prose on the same content grid. Reuse the existing composition
+  width and safe CSS focal cropping for illustrative scenes; do not crop
+  diagrams/logos or rewrite original assets.
+
+### Added
+
+- Explicit dark printing across Read, article Slides, Deck, and standalone or
+  companion Sheet. Light remains the backward-compatible default regardless
+  of screen theme. `data-print-theme="dark"`, **PDF theme**, and
+  `?print-theme=dark` support author/reader choice; `export-pdf.js --theme
+  light|dark` overrides it for a run. Both palettes preserve the accent family.
+- Canonical dark page backgrounds and readable reading-page numbers/margins,
+  shared by browser printing and the PDF exporter, not document-specific CSS.
+- Focused semantic/print regressions, actual PDF exports and exact pagination
+  checks, browser print-control/precedence/no-JS checks, and shared-edge
+  measurements in the composition suite. Eight screen appearances and
+  offline/no-JS behavior remain supported.
+
+### Upgrading a document
+
+Copy the updated assets, add the `toggle-print-theme` control from the template
+if desired (decks create it automatically), run `node assets\sync-head.js`,
+and rebuild standalone HTML and PDFs. Remove old last-item neutralizing
+overrides; opt into meaningful emphasis explicitly. Existing documents still
+print light unless an author or operator explicitly selects dark. Use separate
+output folders when keeping both PDF palettes, and inspect the actual pages.
+
+## 1.3.1 — 2026-10-14
+
+**Documentation-only correction to the optional companion workflow.**
+
+- Identify `image-generator` as the separately installed skill and Python CLI,
+  not a canvas or invented agent tool. Load its instructions for offline
+  planning, optional authorized discovery and explicitly approved inference.
+- Preserve actual model/capability checks, strict native dimensions, concrete
+  cloud-operation consent and offline HTML boundaries. `document-review`
+  remains the separate canvas for local image-candidate review.
+- No template, composition stylesheet or runtime changes.
+
+## 1.3.0 — 2026-10-14
+
+**Optional claim-led image compositions, without changing the core runtime.**
+
+### Added
+
+- Opt-in `assets/compositions.css`: readable hero fade with protected HTML
+  copy, image/text split, panorama strip, circle/oval, diagonal, and rounded
+  organic crops. Works in deck slides, article Slides and Read, with responsive
+  reading and light print treatment. Existing templates do not load it.
+- `visual.article.html` and `visual.deck.html`: editable offline galleries of
+  all seven compositions using original, explicitly fictional
+  `assets/sample-scene.svg`, included under MIT. Existing component galleries
+  point to these examples.
+- `references/visual-storytelling.md`: scene briefs tied to a claim, text-safe
+  space, crop-safe subjects, materials, authorized references and invariants,
+  and an optional separately installed Image generator companion. No mandatory
+  chat or service prerequisite.
+- Focused browser regression runner `assets/test-compositions.js`, reusing the
+  existing Playwright/Chromium discovery and built-in bundler; isolated offline
+  exports, crop geometry, readability, narrow reading, print, and hash focus.
+- Documented existing stable-hash focus hooks for embedded deck/article
+  previews. No new navigation API or runtime behavior.
+
+### Clarified
+
+- Canonical UI tokens, default palettes and one accent remain unchanged.
+  Natural image and authentic authorized logo colors are image content, not
+  additional UI accents. Semantic diagrams still follow the controls.
+- Brand profiles require explicit opt-in and authorized references; ordinary
+  authoring, reading, presentation, bundling and printing remain independent
+  of Azure, cloud services, login, image generation, and chat.
+
+### Upgrading a document
+
+No change is needed for existing text/diagram documents. For optional images,
+copy the new assets and load `compositions.css` after the chosen view styles.
+Keep assets local, rebuild the standalone file, and validate all offered views.
+
+## 1.2.0 — 2026-09-30
+
+**Four Microsoft-logo accent families, with readable light-mode shades.**
+
+### Changed
+
+- Accent cycles blue, red (red-orange), green, yellow across articles, slides,
+  decks, and sheets. One family remains active throughout a document.
+- Dark mode uses the exact logo values: blue `#00A4EF`, red `#F25022`,
+  green `#7FBA00`, yellow `#FFB900`.
+- Light mode uses the approved design-preview shades: blue `#006DA0`,
+  red `#BC3A16`, green `#4C7100`, yellow `#805B00`. These are this skill's
+  design, not officially documented Microsoft counterparts.
+- PDFs use the selected family's light shade, even from a dark screen.
+- Legacy `orange` URL overrides, authored defaults, and stored choices map
+  to `red`; CSS also preserves the no-JavaScript `orange` default.
+- Templates, component galleries, example HTML/PDFs, and documentation use
+  the updated canonical head. Browser validation covers all eight palettes,
+  exact shade pairs, light text contrast, and legacy accent compatibility.
+
+### Upgrading a document
+
+Copy the updated assets, run `node assets\sync-head.js` on the linked source,
+then rebuild its standalone HTML and PDFs. Prefer `red` in new defaults and
+links; existing `orange` values remain accepted.
+
+## 1.1.0 — 2026-09-28
+
+**Sheets, PDF export, and a screen that stays awake while presenting.**
+
+### Added
+
+- **Sheet view** for one-pagers, datasheets, and briefs. Every `.sheet-page`
+  is exactly one A4 or Letter page, previewed on screen as it prints. Use it
+  as a standalone document (`sheet.template.html`) or as a third view beside
+  an article's Read and Slides. Components: kicker, claim title, key figures,
+  block grid, comparison matrix with drawn marks and legend, actions, closing
+  line, and footnotes. See `references/sheet.md`.
+- **PDF button** in every shape. It prints the view on screen (document,
+  slides, or sheet) from a local file, with no server. `Ctrl+P` does the same.
+- **`assets/export-pdf.js`** writes one PDF per view, tagged and bookmarked.
+  It refuses to write a view whose pages clip, whose page count differs from
+  its slides or sheet pages, or whose page did not load cleanly. See
+  `references/pdf-export.md`.
+- **Screen wake lock** while presenting in article slides mode or a deck, so
+  the display does not dim, blank, or start the screen saver.
+- Validator checks for sheets (fit, 7.5 pt text floor, labelled marks, view
+  switching) and a print pass for every view, including exact PDF page counts.
+
+### Changed
+
+- Every printout and PDF uses the light palette; dark tokens apply on screen.
+- The reading PDF has page numbers, keeps long cards flowing across pages
+  instead of pushing them whole to the next page, and starts without the
+  screen header's top padding.
+- Slides print one 16:9 page per slide with every point shown.
+- `SKILL.md` chooses among Read, Slides, and Sheet views, and asks when the
+  request leaves the combination unclear.
+- The example now includes a companion sheet and its three PDFs.
+
+### Upgrading a document
+
+Copy the new `assets` folder, then run `node assets\sync-head.js` on the
+source so its inline head matches the new `appearance.js` and `tokens.css`.
+Add `<button type="button" class="ctrl" data-action="print">PDF</button>` to
+the controls, and rebuild the standalone export.
+
+## 1.0.0 — 2026-09-15
+
+First published version: article with slides mode, slide-first deck,
+single-accent light/dark themes, single-file export, and browser validation.

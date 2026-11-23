@@ -1,0 +1,172 @@
+{
+  "documentId": "frontier-day-controlled-loops-2026",
+  "retrievedDate": "2026-10-31",
+  "views": [
+    "slides"
+  ],
+  "slideCount": 22,
+  "sources": [
+    {
+      "id": "G1",
+      "sourceClass": "public-repository",
+      "tool": "gh api",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "revision": "c59fe829387af0055dfa78fe8fc5b7859bc827e0",
+      "url": "https://github.com/tkubica12/github-loop-engineering/blob/c59fe829387af0055dfa78fe8fc5b7859bc827e0/docs/labs/02-inner-loop/artifacts/partial-stock-visibility.goal-card.md",
+      "supportsClaim": true,
+      "claims": [
+        "synthetic example: request 5 with available 4",
+        "no partial reservation",
+        "acceptance checks and authority/stop boundaries"
+      ]
+    },
+    {
+      "id": "S1",
+      "sourceClass": "public-repository",
+      "tool": "gh api",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "revision": "7370e592f3cd9c06e5b698983957e227c75b30e2",
+      "url": "https://github.com/github/spec-kit/blob/7370e592f3cd9c06e5b698983957e227c75b30e2/README.md",
+      "supportsClaim": true,
+      "claims": [
+        "structured spec-driven process and reusable primitives"
+      ],
+      "limits": [
+        "not evidence that a speaker uses Spec Kit"
+      ]
+    },
+    {
+      "id": "P1",
+      "sourceClass": "official-announcement",
+      "tool": "web_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://x.com/GitHubNext/status/2112936525457740139",
+      "supportsClaim": true,
+      "claims": [
+        "PDD Kit from Microsoft Research, integrated with GitHub Next Chopin",
+        "human approval of formal Verus specification",
+        "Rust verifier proves specified properties",
+        "empirical fallback with tests and computer-use agents"
+      ],
+      "limits": [
+        "publication timestamp not exposed in retrieved page",
+        "research demonstration, not GA claim",
+        "does not establish correctness of intent or entire deployed system"
+      ]
+    },
+    {
+      "id": "P2",
+      "sourceClass": "official-project-description",
+      "tool": "web_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://githubnext.com/projects/chopin/",
+      "supportsClaim": true,
+      "claims": [
+        "team planning, review and decision ownership"
+      ],
+      "limits": [
+        "read bounded opening passage; later truncated section not used for claims"
+      ]
+    },
+    {
+      "id": "U1",
+      "sourceClass": "official-announcement",
+      "tool": "WebIQ-MCP-web, web_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": "2026-10-28",
+      "url": "https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/",
+      "supportsClaim": true,
+      "claims": [
+        "completed work rather than more code",
+        "Copilot app, projects, automations and code review Max",
+        "outcome-based improvement proposals with human review"
+      ],
+      "unused": [
+        "Fusion performance benchmarks",
+        "infrastructure capacities",
+        "enterprise billing",
+        "five-year software-volume prediction"
+      ]
+    },
+    {
+      "id": "U2",
+      "sourceClass": "official-documentation",
+      "tool": "web_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-projects",
+      "supportsClaim": true,
+      "claims": [
+        "ongoing goal, coordination across repositories and sessions",
+        "public preview"
+      ]
+    },
+    {
+      "id": "U3",
+      "sourceClass": "official-documentation",
+      "tool": "web_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/about-automations",
+      "supportsClaim": true,
+      "claims": [
+        "scheduled/event/API triggers",
+        "tool and identity scope",
+        "groups can suggest improvements based on outcomes"
+      ],
+      "limits": [
+        "cloud automation availability depends on private/internal repositories and policies",
+        "later truncated sections not used"
+      ]
+    },
+    {
+      "id": "A1",
+      "sourceClass": "official-Microsoft-documentation",
+      "tool": "microsoft_docs_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://learn.microsoft.com/en-us/azure/sre-agent/execute-mitigations",
+      "supportsClaim": true,
+      "claims": [
+        "diagnosis, permitted mitigation and verification",
+        "work items through configured connectors"
+      ],
+      "limits": [
+        "mode/default descriptions differ in detail from Run modes page; no universal default claimed"
+      ]
+    },
+    {
+      "id": "A2",
+      "sourceClass": "official-Microsoft-documentation",
+      "tool": "microsoft_docs_fetch",
+      "status": "searched",
+      "resultCount": 1,
+      "publicationDate": null,
+      "url": "https://learn.microsoft.com/en-us/azure/sre-agent/run-modes",
+      "supportsClaim": true,
+      "claims": [
+        "approval mode is separate from resource permissions",
+        "Review approvals apply to Azure infrastructure operations; other tools need their own governance"
+      ]
+    }
+  ],
+  "hypotheses": [
+    "test pyramid",
+    "abstractions",
+    "DRY economics",
+    "human review"
+  ],
+  "notes": "The four future theses are author hypotheses, not proven by announcements."
+}

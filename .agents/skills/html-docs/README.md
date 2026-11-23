@@ -1,0 +1,164 @@
+# html-docs
+
+**One transferable HTML file: the detailed document, the live presentation, and
+a one-pager, each with a PDF.** Present the concise argument, then send
+listeners that same file. They find the same chapters and cards in the same
+order, but with fuller explanations and deeper reveals. Slides carry short
+speaker cues, not the document's paragraphs or interactive controls. An
+optional sheet condenses the argument into a one-pager or datasheet that
+prints exactly as previewed.
+
+Choose the views a document needs: **Read**, **Slides**, **Sheet**, or any
+combination; a standalone one-pager or a separate slide-first deck is also
+available. The **PDF** button prints the view on screen from a local file, and
+the skill exports the same PDFs with page-count checks. When someone needs a
+PowerPoint file, the slides also export to `.pptx` with editable text that
+PowerPoint renders like the HTML. All shapes support
+light/dark themes, one switchable blue/red/green/yellow accent, keyboard
+navigation, reduced-motion-aware point builds, a screen that stays awake while
+presenting, offline use, and readable content without JavaScript.
+
+## Try it
+
+> Use html-docs to explain an engineering decision as a short live presentation
+> and a detailed follow-up document with the same structure. Put supporting
+> reasoning in reveals. Give every card a concise slide surface, with at most
+> three short cues, plus a polished opening and memorable closing. Add a
+> one-page A4 sheet with the decision for people who only skim. Use grayscale
+> and one accent. Build the single-file HTML export so I can present it and
+> send that exact file to everyone afterward, and export the PDFs too.
+
+Or just: *“Use html-docs to make a one-page datasheet for …, with a PDF.”*
+
+- [Example and opening instructions](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/README.md)
+- [Downloadable talk + document + sheet](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/queue-is-not-capacity.standalone.html),
+  with nine generated illustrations
+- Light exports of the same file: [document PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/light/queue-is-not-capacity.document.pdf),
+  [slides PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/light/queue-is-not-capacity.slides.pdf),
+  [one-page brief PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/light/queue-is-not-capacity.sheet.pdf),
+  [PowerPoint](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/light/queue-is-not-capacity.slides.pptx)
+- Dark exports: [document PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/dark/queue-is-not-capacity.document.pdf),
+  [slides PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/dark/queue-is-not-capacity.slides.pdf),
+  [one-page brief PDF](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/dark/queue-is-not-capacity.sheet.pdf),
+  [PowerPoint](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/exports/dark/queue-is-not-capacity.slides.pptx)
+- [Editable example source](https://github.com/tkubica12/tomas-skills/blob/main/examples/html-docs/queue-is-not-capacity.html)
+- [Changes by version](CHANGELOG.md)
+
+## Optional PowerPoint export
+
+Version **1.5.0** adds `export-pptx.js` for people who must receive a `.pptx`.
+HTML stays the source and PDF the primary handout. Each slide uses the printed
+design as its background picture, with native, editable text boxes placed
+where the browser laid out the text, using the document's fonts, colors, and
+line breaks. Article slides carry their reading text as speaker notes, and
+every slide has a title for the outline and accessibility checker. Text
+PowerPoint cannot draw identically stays in the picture; `--text image` makes
+picture-only slides for archives.
+
+`test-pptx.js` renders every slide in desktop PowerPoint and compares it with
+the browser, tolerating only one render pixel of pixel-grid snapping: no
+32 × 32 slide-pixel area may differ on more than 2% of its pixels, enough to
+catch one missing character. Native text needs the document's fonts on the
+recipient's machine. See [PowerPoint export](references/pptx-export.md).
+
+Version **1.6.0** adds `--accent` to both exporters and the verifier. A PDF or
+`.pptx` freezes one palette, so the agent asks for light or dark and the
+accent before exporting, unless you already said. The example now carries
+generated illustrations and ships light and dark PDFs and PowerPoint files;
+both `.pptx` files pass the PowerPoint comparison with no differing area.
+
+## Optional visual storytelling
+
+Version **1.4.0** includes a small, opt-in image composition stylesheet:
+readable hero fade, image/text split, panorama, circle, oval, diagonal, and
+rounded organic crops. Use it in deck slides, article Slides, and article
+Read; print defaults to light, with explicit dark export supported. Try the offline, editable
+[article gallery](visual.article.html) and [deck gallery](visual.deck.html).
+Their original fictional SVG needs no image service or external asset.
+
+Sequence items are neutral unless an author explicitly marks the subject with
+`sequence-item--emphasis`. Use ordered arrows for progressions and the existing
+summary grid for unordered peers. Related cards, panorama, caption, and text
+share a content-width grid; the visual galleries demonstrate these outer edges.
+
+Start with the claim, then brief the scene, text-safe space, crop-safe subjects,
+materials, authorized references, and invariants. UI colors retain the canonical
+single accent; natural image and authentic supplied logo colors are not UI
+accents. Brand profiles are **explicit opt-in**, not defaults.
+
+The [visual storytelling reference](references/visual-storytelling.md) includes
+markup and the optional, separately installed **image-generator skill and
+Python CLI** workflow, not an image-generation canvas. Follow that skill's
+instructions and CLI for generation; `document-review` is the separate canvas
+for local candidate review. No compulsory chat, generation, login, Azure, or
+cloud dependency is added to ordinary authoring or recipients' HTML. Local supplied images work
+equally well; `bundle.js` embeds the approved assets for offline sharing.
+
+## Review with Document review
+
+[Document review](https://github.com/tkubica12/tomas-skills/tree/main/extensions/document-review)
+is an optional companion **Canvas extension for GitHub Copilot App**. It opens
+the rendered local HTML in a side panel next to the conversation. Select text
+in the document or slides, save a comment, an exact replacement, or a deletion
+request, then explicitly send the annotations to the agent. The agent edits
+the source; selecting or annotating text does not change the document itself.
+
+In GitHub Copilot App, ask:
+
+> Install this canvas extension as a personal extension:
+> https://github.com/tkubica12/tomas-skills/tree/main/extensions/document-review
+
+Then ask:
+
+> Open my editable html-docs HTML in Document review so I can annotate it.
+> After I send the annotations, apply them to the source and rebuild the
+> standalone HTML and any requested PDFs.
+
+Install it separately from the skill:
+**`gh skill install tkubica12/tomas-skills html-docs` does not install the
+extension**. It requires app extension canvas support, works with
+local HTML rather than public website URLs, and is not needed by recipients.
+Review the editable linked-assets source, not the generated `.standalone.html`;
+provide the smallest asset root containing its linked assets. See the
+[extension documentation](https://github.com/tkubica12/tomas-skills/blob/main/extensions/document-review/README.md)
+for installation scopes, persistent annotations, and preview limits.
+
+## Requirements
+
+- **Read/present/print:** a modern browser; no server or installation for
+  recipients. **PDF** uses the browser's Save as PDF.
+- **Export:** Node.js; the HTML exporter uses built-in modules, no npm
+  dependencies.
+- **Validate and export PDFs or PowerPoint:** Node.js, Playwright, and
+  Chromium or a compatible installed browser. Playwright is only for the
+  author, not for the document. The PowerPoint render check additionally
+  needs desktop PowerPoint on Windows.
+
+Dark mode uses the four exact Microsoft logo colors; light mode uses darker
+counterparts for readable accents. The light shades are this skill's design,
+not official Microsoft logo variants. The same family follows every view,
+diagram, and control; PDFs use its light shade by default. **PDF theme**
+selects light or dark printing independently of the screen. Authors can set
+`data-print-theme="dark"` on `<html>`; `?print-theme=dark` or the exporter's
+`--theme dark` is an explicit operator override. Dark PDFs retain the selected
+family's dark shade. Existing `orange` links,
+defaults, and saved preferences resolve to the red-orange `red` family.
+
+The agent follows [SKILL.md](SKILL.md), starts from the included templates,
+and validates the result. The linked source remains editable; the generated
+`.standalone.html` is the file to share.
+
+```powershell
+node assets\bundle.js my-document.html
+node assets\validate.js my-document.html
+node assets\export-pdf.js my-document.standalone.html
+node assets\export-pdf.js my-document.standalone.html --theme dark --accent green --out dark-pdf
+node assets\export-pptx.js my-document.standalone.html --theme light --accent blue
+node assets\test-pptx.js my-document.standalone.html --theme light --accent blue
+```
+
+See [validation setup](references/validation.md) for browser overrides and
+isolated export checks, [PDF export](references/pdf-export.md) for PDF
+naming and checks, and [PowerPoint export](references/pptx-export.md) for
+`.pptx` fidelity and fonts. Licensed under [MIT](LICENSE); preserve its notice when
+redistributing the runtime.
