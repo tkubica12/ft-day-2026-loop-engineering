@@ -356,7 +356,15 @@ SOFTWARE.
 
   <section class="slide" id="s-shieldoo-gate" data-speaker="valda">
     <div class="slide-head">
-      <h2 class="slide-title">Shieldoo-gate není jen o kódu.</h2>
+      <h2 class="slide-title">Hra jde na jeden zátah. Shieldoo-gate už ne.</h2>
+      <p class="slide-lead">Shieldoo-gate: pračka na balíčky, skoro 80 tisíc řádků Go.</p>
+    </div>
+    <div class="slide-body">
+      <div class="summary-grid retro-grid-3">
+        <div class="summary-item"><span class="summary-label">Do 2 000 řádků</span>Model to celé udrží v hlavě. Funguje nádherně.</div>
+        <div class="summary-item"><span class="summary-label">Nad 50 000 řádků</span>Nedodělané features, ošizené testy, refaktoring úplně jinde.</div>
+        <div class="summary-item"><span class="summary-label">Co s tím</span>Dodat helicopter view: SDD + TDD, feature po feature.</div>
+      </div>
     </div>
     <p class="slide-note">Valda</p>
   </section>
@@ -376,7 +384,7 @@ SOFTWARE.
 
   <section class="slide" id="s-spec-driven" data-speaker="valda">
     <div class="slide-head"><h2 class="slide-title">Specifikace zpřesňuje, co má agent dodat.</h2><p class="slide-lead">Spec-driven development (SDD)</p></div>
-    <div class="slide-body retro-split"><ul class="arrow-list"><li>Analýza vyjasní rozsah z pohledu BA, dev, security i performance.</li><li>Člověk schvaluje návrh a plán; agent implementuje.</li><li>TDD a žádné neobjednané funkce navíc.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/spec-B.png" loading="lazy" decoding="async" alt="Robot studuje detailní specifikaci pod zelenou lampou a zadává příkaz do terminálu." width="2880" height="2880"></div></div>
+    <div class="slide-body retro-split"><ul class="arrow-list"><li>Spec říká, co dodat a kam se smí sáhnout.</li><li>Analýza jde přes čtyři review, pak ji schvaluju já.</li><li>Žádné funkce navíc. Hranice drží CLAUDE.md a ADR.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/spec-B.png" loading="lazy" decoding="async" alt="Robot studuje detailní specifikaci pod zelenou lampou a zadává příkaz do terminálu." width="2880" height="2880"></div></div>
     <p class="slide-note">Valda</p>
   </section>
 
@@ -403,7 +411,7 @@ SOFTWARE.
 
   <section class="slide" id="s-skills" data-speaker="valda">
     <div class="slide-head"><h2 class="slide-title">Skilly předávají týmové know-how.</h2></div>
-    <div class="slide-body retro-split"><ul class="arrow-list"><li>Opakovatelný postup místo ad hoc promptu.</li><li>Sdílení a review jako součást projektu.</li><li>Aktualizace podle zkušeností z použití.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/skills-B.png" loading="lazy" decoding="async" alt="Starší robot předává absolventský diplom robotu v černé čepici." width="2880" height="2880"></div></div>
+    <div class="slide-body retro-split"><ul class="arrow-list"><li>Dělám to potřetí → udělám z toho skill.</li><li>Security review s naším threat modelem se spustí samo.</li><li>Know-how není prompt v hlavě, ale soubor v repu.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/skills-B.png" loading="lazy" decoding="async" alt="Starší robot předává absolventský diplom robotu v černé čepici." width="2880" height="2880"></div></div>
     <p class="slide-note">Valda</p>
   </section>
 
@@ -418,7 +426,15 @@ SOFTWARE.
   </section>
 
   <section class="slide" id="s-valda-practice" data-speaker="valda">
-    <div class="slide-head"><h2 class="slide-title">Jak Valda tyto principy používá v praxi.</h2></div>
+    <div class="slide-head"><h2 class="slide-title">Jeden epic, 15 issues, 49 agentů.</h2><p class="slide-lead">17 plánuje, 11 implementuje, 15 kontroluje, 6 píše akceptaci.</p></div>
+    <!-- Valda: sem později patří mapa agentů (slide2_agent_map.svg), případně strom epic → issues. -->
+    <div class="slide-body">
+      <div class="summary-grid retro-grid-3">
+        <div class="summary-item"><span class="summary-label">Outer loop</span>Řídicí agent rozdá práci, nechá ji zkontrolovat a opravit.</div>
+        <div class="summary-item"><span class="summary-label">Inner loop</span>Jeden agent, jeden task, čistý kontext. SDD + TDD.</div>
+        <div class="summary-item"><span class="summary-label">Já</span>Schválím plán, rozseknu sporné body, přijmu výsledek.</div>
+      </div>
+    </div>
     <p class="slide-note">Valda</p>
   </section>
 
@@ -441,7 +457,7 @@ SOFTWARE.
   </section>
 
   <section class="slide" id="s-acceptance" data-speaker="valda">
-    <div class="slide-head"><h2 class="slide-title">Agent připraví změnu; tým určí, zda ji přijme.</h2><p class="slide-lead">Práce podle cílů a automatizovaná workflow.</p></div>
+    <div class="slide-head"><h2 class="slide-title">Agent připraví změnu; tým určí, zda ji přijme.</h2><p class="slide-lead">Připraveno = zelené gates + moje „ano“ k architektuře.</p></div>
     <div class="slide-body retro-split">
       <div class="retro-points">
         <div class="summary-item"><span class="summary-label">Hard gates v CI</span>Build, testy, E2E a security review.</div>
@@ -506,7 +522,7 @@ SOFTWARE.
     <div class="slide-body retro-debate">
       <div class="retro-frame retro-head retro-head--left"><img src="assets/retro/head-left-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doprava." width="2160" height="3840"></div>
       <div class="summary-item"><span class="retro-speaker-name">Tomáš</span>AI může zlevnit pokrytí celých uživatelských průchodů.</div>
-      <div class="summary-item"><span class="retro-speaker-name">Valda</span>UI/E2E zlevnilo; unit testy a TDD zůstávají. Číst, co test opravdu ověřuje.</div>
+      <div class="summary-item"><span class="retro-speaker-name">Valda</span>E2E je náš gate, UI testy fakt zlevnily. TDD zůstává. POZOR: testy musí někdo číst.</div>
       <div class="retro-frame retro-head retro-head--right"><img src="assets/retro/head-right-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doleva." width="2160" height="3840"></div>
     </div>
     <p class="slide-note">Tomáš a Valda</p>
@@ -517,7 +533,7 @@ SOFTWARE.
     <div class="slide-body retro-debate">
       <div class="retro-frame retro-head retro-head--left"><img src="assets/retro/head-left-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doprava." width="2160" height="3840"></div>
       <div class="summary-item"><span class="retro-speaker-name">Tomáš</span>Agent může rozumět přímo zapsanému systému lépe než další vrstvě.</div>
-      <div class="summary-item"><span class="retro-speaker-name">Valda</span>U nás to sedí; nejde o plošné doporučení odstranit abstrakce.</div>
+      <div class="summary-item"><span class="retro-speaker-name">Valda</span>Sedí. S explicitním Bicepem nebo SQL si agent poradí líp než s našimi wrappery.</div>
       <div class="retro-frame retro-head retro-head--right"><img src="assets/retro/head-right-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doleva." width="2160" height="3840"></div>
     </div>
     <p class="slide-note">Tomáš a Valda</p>
@@ -528,7 +544,7 @@ SOFTWARE.
     <div class="slide-body retro-debate">
       <div class="retro-frame retro-head retro-head--left"><img src="assets/retro/head-left-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doprava." width="2160" height="3840"></div>
       <div class="summary-item"><span class="retro-speaker-name">Tomáš</span>Levnější změny mohou posunout rovnováhu mezi sdílením a izolací.</div>
-      <div class="summary-item"><span class="retro-speaker-name">Valda</span>Nesouhlasím: agent zlevnil refaktoring a reuse víc než duplicitu. Nenafukovat codebase.</div>
+      <div class="summary-item"><span class="retro-speaker-name">Valda</span>Jen částečně. Zlevnil refaktoring, ne duplicita. Agent generuje ochotně a bez odporu.</div>
       <div class="retro-frame retro-head retro-head--right"><img src="assets/retro/head-right-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doleva." width="2160" height="3840"></div>
     </div>
     <p class="slide-note">Tomáš a Valda</p>
@@ -539,7 +555,7 @@ SOFTWARE.
     <div class="slide-body retro-debate">
       <div class="retro-frame retro-head retro-head--left"><img src="assets/retro/head-left-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doprava." width="2160" height="3840"></div>
       <div class="summary-item"><span class="retro-speaker-name">Tomáš</span>Lidé více kontrolují záměr a pravidla přijetí než každý řádek.</div>
-      <div class="summary-item"><span class="retro-speaker-name">Valda</span>To sedí: hard gates v CI, lidské review architektury a akceptace.</div>
+      <div class="summary-item"><span class="retro-speaker-name">Valda</span>Sedí. Čtu architekturu a pravidla přijetí, ne řádky.</div>
       <div class="retro-frame retro-head retro-head--right"><img src="assets/retro/head-right-A.png" loading="lazy" decoding="async" alt="Detail robotické hlavy z profilu, která hledí doleva." width="2160" height="3840"></div>
     </div>
     <p class="slide-note">Tomáš a Valda</p>
