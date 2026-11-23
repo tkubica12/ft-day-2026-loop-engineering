@@ -251,6 +251,26 @@
 .retro-band--plug .composition-media { aspect-ratio: 4.8 / 1; }
 .retro-band--signs .composition-media { aspect-ratio: 4.3 / 1; }
 .retro-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.agent-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.36fr) minmax(0, 1fr);
+  gap: 24px;
+  height: 100%;
+  align-items: center;
+}
+.agent-split .retro-frame { aspect-ratio: 1520 / 668; }
+.agent-split .retro-frame img { object-fit: contain; }
+.agent-split .retro-points .summary-item { padding: 12px 14px; font-size: 17px; line-height: 1.28; }
+.shot-duo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 16px 24px;
+  height: 100%;
+}
+.shot-duo .retro-frame img { object-position: var(--image-position, 50% 50%); }
+.shot-duo > .summary-item { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px; padding: 14px 18px; }
+.shot-duo > .summary-item .summary-label { margin-bottom: 0; }
 .slide-body > .retro-grid-3 + .retro-band { margin-top: 20px; }
 .retro-debate {
   display: grid;
@@ -360,9 +380,15 @@ SOFTWARE.
       <p class="slide-lead">Shieldoo-gate: pračka na balíčky, skoro 80 tisíc řádků Go.</p>
     </div>
     <div class="slide-body">
-      <div class="summary-grid retro-grid-3">
-        <div class="summary-item"><span class="summary-label">Do 2 000 řádků</span>Model to celé udrží v hlavě. Funguje nádherně.</div>
-        <div class="summary-item"><span class="summary-label">Nad 50 000 řádků</span>Nedodělané features, ošizené testy, refaktoring úplně jinde.</div>
+      <div class="shot-duo">
+        <div class="retro-pair">
+          <div class="summary-item"><span class="summary-label">Do 2 000 řádků</span>Model to celé udrží v hlavě. Funguje nádherně.</div>
+          <div class="retro-frame"><img src="assets/valda/hra.png" loading="lazy" decoding="async" alt="Snímek z retro hry portované do HTML: tank v zaměřovači mezi stromy a paneláky." width="1920" height="1080"></div>
+        </div>
+        <div class="retro-pair">
+          <div class="summary-item"><span class="summary-label">Nad 50 000 řádků</span>Nedodělané features, ošizené testy, refaktoring úplně jinde.</div>
+          <div class="retro-frame" style="--image-position:0% 0%"><img src="assets/valda/shieldoo-gate.png" loading="lazy" decoding="async" alt="Dashboard Shieldoo Gate s počty artefaktů, požadavků a zranitelností." width="1920" height="1080"></div>
+        </div>
         <div class="summary-item"><span class="summary-label">Co s tím</span>Dodat helicopter view: SDD + TDD, feature po feature.</div>
       </div>
     </div>
@@ -384,7 +410,13 @@ SOFTWARE.
 
   <section class="slide" id="s-spec-driven" data-speaker="valda">
     <div class="slide-head"><h2 class="slide-title">Specifikace zpřesňuje, co má agent dodat.</h2><p class="slide-lead">Spec-driven development (SDD)</p></div>
-    <div class="slide-body retro-split"><ul class="arrow-list"><li>Spec říká, co dodat a kam se smí sáhnout.</li><li>Analýza jde přes čtyři review, pak ji schvaluju já.</li><li>Žádné funkce navíc. Hranice drží CLAUDE.md a ADR.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/spec-B.png" loading="lazy" decoding="async" alt="Robot studuje detailní specifikaci pod zelenou lampou a zadává příkaz do terminálu." width="2880" height="2880"></div></div>
+    <div class="slide-body retro-split">
+      <div class="retro-points">
+        <div class="summary-item"><span class="summary-label">Rozsah</span>Spec říká, co dodat a kam se smí sáhnout.</div>
+        <div class="summary-item"><span class="summary-label">Review</span>Analýza jde přes čtyři review, pak ji schvaluju já.</div>
+        <div class="summary-item"><span class="summary-label">Hranice</span>Žádné funkce navíc. Zbytek drží CLAUDE.md a ADR.</div>
+      </div>
+      <div class="retro-frame retro-square"><img src="assets/retro/spec-B.png" loading="lazy" decoding="async" alt="Robot studuje detailní specifikaci pod zelenou lampou a zadává příkaz do terminálu." width="2880" height="2880"></div></div>
     <p class="slide-note">Valda</p>
   </section>
 
@@ -411,7 +443,13 @@ SOFTWARE.
 
   <section class="slide" id="s-skills" data-speaker="valda">
     <div class="slide-head"><h2 class="slide-title">Skilly předávají týmové know-how.</h2></div>
-    <div class="slide-body retro-split"><ul class="arrow-list"><li>Dělám to potřetí → udělám z toho skill.</li><li>Security review s naším threat modelem se spustí samo.</li><li>Know-how není prompt v hlavě, ale soubor v repu.</li></ul><div class="retro-frame retro-square"><img src="assets/retro/skills-B.png" loading="lazy" decoding="async" alt="Starší robot předává absolventský diplom robotu v černé čepici." width="2880" height="2880"></div></div>
+    <div class="slide-body retro-split">
+      <div class="retro-points">
+        <div class="summary-item"><span class="summary-label">Kdy vzniká</span>Dělám to potřetí → udělám z toho skill.</div>
+        <div class="summary-item"><span class="summary-label">Příklad</span>Security review s naším threat modelem se spustí samo.</div>
+        <div class="summary-item"><span class="summary-label">Kde žije</span>Know-how není prompt v hlavě, ale soubor v repu.</div>
+      </div>
+      <div class="retro-frame retro-square"><img src="assets/retro/skills-B.png" loading="lazy" decoding="async" alt="Starší robot předává absolventský diplom robotu v černé čepici." width="2880" height="2880"></div></div>
     <p class="slide-note">Valda</p>
   </section>
 
@@ -427,12 +465,14 @@ SOFTWARE.
 
   <section class="slide" id="s-valda-practice" data-speaker="valda">
     <div class="slide-head"><h2 class="slide-title">Jeden epic, 15 issues, 49 agentů.</h2><p class="slide-lead">17 plánuje, 11 implementuje, 15 kontroluje, 6 píše akceptaci.</p></div>
-    <!-- Valda: sem později patří mapa agentů (slide2_agent_map.svg), případně strom epic → issues. -->
     <div class="slide-body">
-      <div class="summary-grid retro-grid-3">
-        <div class="summary-item"><span class="summary-label">Outer loop</span>Řídicí agent rozdá práci, nechá ji zkontrolovat a opravit.</div>
-        <div class="summary-item"><span class="summary-label">Inner loop</span>Jeden agent, jeden task, čistý kontext. SDD + TDD.</div>
-        <div class="summary-item"><span class="summary-label">Já</span>Schválím plán, rozseknu sporné body, přijmu výsledek.</div>
+      <div class="agent-split">
+        <div class="retro-points">
+          <div class="summary-item"><span class="summary-label">Outer loop</span>Žije v GitHub Projectu a issues. Řídicí agent rozdá práci a hlídá review.</div>
+          <div class="summary-item"><span class="summary-label">Inner loop</span>Jeden agent, jeden task, čistý kontext. SDD + TDD.</div>
+          <div class="summary-item"><span class="summary-label">Já</span>Schválím plán, rozseknu sporné body, přijmu výsledek.</div>
+        </div>
+        <div class="retro-frame"><img src="assets/valda/agent-map.svg" loading="lazy" decoding="async" alt="Mapa agentů: řídicí agent WT-09 koordinuje epic #523 a pod ním čtyři větve agentů pro plánování, implementaci, review a akceptační scénáře." width="1520" height="668"></div>
       </div>
     </div>
     <p class="slide-note">Valda</p>
